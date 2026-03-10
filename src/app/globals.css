@@ -1,6 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-easy-blue: #0047AB;
+  --color-easy-orange: #FF8C00;
+}
 
 :root {
   --background: #f8fafc;
@@ -11,9 +14,11 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
 }
 
-/* Remove qualquer tentativa de usar oklch ou lab em gradientes */
+/* Utilitário para o gradiente da EASYLAN */
 .bg-gradient-easylan {
   background: linear-gradient(135deg, #0047AB 0%, #002e6e 100%);
+}
 }
