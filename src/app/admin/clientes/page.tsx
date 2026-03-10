@@ -1,9 +1,8 @@
 'use client';
-
 import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 import { setEmpresaAtiva } from '@/lib/context';
-import { Building2, Plus, ArrowRight, Loader2, ShieldCheck, Database, Users } from 'lucide-react';
+import { Building2, Plus, ArrowRight, Loader2, ShieldCheck, Database } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 export default function AdminClientesPage() {
@@ -19,7 +18,6 @@ export default function AdminClientesPage() {
     metodologia_risco: 'ISO 31000'
   });
 
-  // Garante que o componente só renderize interações após montar no cliente
   useEffect(() => {
     setMounted(true);
     fetchEmpresas();
@@ -42,7 +40,8 @@ export default function AdminClientesPage() {
       setForm({ nome_fantasia: '', razao_social: '', cnpj: '', setor: '', numero_funcionarios: '', sistemas_criticos: '', contato_seguranca: '', metodologia_risco: 'ISO 31000' });
       fetchEmpresas();
     } else {
-      alert("Erro ao cadastrar: " + error.message);
+      // CORREÇÃO AQUI: Adicionado o sinal de interrogação para evitar o erro de TypeScript
+      alert("Erro ao cadastrar: " + (error?.message || "Erro desconhecido"));
     }
   }
 
@@ -51,7 +50,6 @@ export default function AdminClientesPage() {
     router.push('/dashboard');
   };
 
-  // Evita erros de prefetch/SSR do Next.js
   if (!mounted) return null;
 
   return (
@@ -110,7 +108,6 @@ export default function AdminClientesPage() {
         )}
       </main>
 
-      {/* Modal de Cadastro Completo */}
       {showModal && (
         <div className="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-white w-full max-w-2xl rounded-[40px] shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300 max-h-[90vh] overflow-y-auto">
