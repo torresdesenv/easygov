@@ -1,14 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* Configurações para ignorar erros e forçar o deploy */
+  /* O Next.js 16 gerencia o linting de forma diferente, 
+     por isso removemos a chave 'eslint' daqui */
   typescript: {
-    // Ignora erros do TypeScript durante a build
     ignoreBuildErrors: true,
-  },
-  eslint: {
-    // Ignora erros de linting (estilo de código) durante a build
-    ignoreDuringBuilds: true,
   },
 };
 
