@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Remove qualquer tentativa de usar oklch ou lab em gradientes */
+.bg-gradient-easylan {
+  background: linear-gradient(135deg, #0047AB 0%, #002e6e 100%);
+}
